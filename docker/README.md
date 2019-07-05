@@ -23,6 +23,8 @@ WARNING:
 -	[`18.09.7-dind`, `18.09-dind`, `18-dind`, `stable-dind`, `dind`](https://github.com/docker-library/docker/blob/27471a8b93e980bd4c51464ee933ed90fd36bf97/18.09/dind/Dockerfile)
 -	[`18.09.7-git`, `18.09-git`, `18-git`, `stable-git`, `git`](https://github.com/docker-library/docker/blob/91bbc4f7b06c06020d811dafb2266bcd7cf6c06d/18.09/git/Dockerfile)
 
+[![arm64v8/docker build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/docker.svg?label=arm64v8/docker%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/docker/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -69,7 +71,7 @@ If you are still convinced that you need Docker-in-Docker and not just access to
 ## Start a daemon instance
 
 ```console
-$ docker run --privileged --name some-docker -d docker:dind
+$ docker run --privileged --name some-docker -d arm64v8/docker:dind
 ```
 
 **Note:** `--privileged` is required for Docker-in-Docker to function properly, but it should be used with care as it provides full access to the host environment, as explained [in the relevant section of the Docker documentation](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
@@ -79,7 +81,7 @@ By default, the `dind` variants of this image add `--host=tcp://0.0.0.0:2375` (o
 ## Connect to it from a second container
 
 ```console
-$ docker run --rm --link some-docker:docker docker:edge version
+$ docker run --rm --link some-docker:docker arm64v8/docker:edge version
 Client:
  Version:      17.05.0-ce
  API version:  1.27 (downgraded from 1.29)
@@ -99,7 +101,7 @@ Server:
 ```
 
 ```console
-$ docker run -it --rm --link some-docker:docker docker:edge sh
+$ docker run -it --rm --link some-docker:docker arm64v8/docker:edge sh
 / # docker version
 Client:
  Version:      17.05.0-ce
@@ -120,7 +122,7 @@ Server:
 ```
 
 ```console
-$ docker run --rm --link some-docker:docker docker info
+$ docker run --rm --link some-docker:docker arm64v8/docker info
 Containers: 0
  Running: 0
  Paused: 0
@@ -164,7 +166,7 @@ Live Restore Enabled: false
 ```
 
 ```console
-$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker version
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock arm64v8/docker version
 Client:
  Version:      17.05.0-ce
  API version:  1.28 (downgraded from 1.29)
@@ -186,7 +188,7 @@ Server:
 ## Custom daemon flags
 
 ```console
-$ docker run --privileged --name some-overlay-docker -d docker:dind --storage-driver=overlay
+$ docker run --privileged --name some-overlay-docker -d arm64v8/docker:dind --storage-driver=overlay
 ```
 
 ## Where to Store Data
@@ -202,7 +204,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `docker` container like this:
 
 	```console
-	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d docker:dind
+	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d arm64v8/docker:dind
 	```
 
 The `-v /my/own/var-lib-docker:/var/lib/docker` part of the command mounts the `/my/own/var-lib-docker` directory from the underlying host system as `/var/lib/docker` inside the container, where Docker by default will write its data files.

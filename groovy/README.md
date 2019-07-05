@@ -16,18 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.5.7-jdk8`, `2.5-jdk8`, `2.5.7-jdk`, `2.5-jdk`, `jdk8`, `jdk`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jdk8/Dockerfile)
--	[`2.5.7-jre8`, `2.5-jre8`, `2.5.7-jre`, `2.5-jre`, `2.5.7`, `2.5`, `jre8`, `jre`, `latest`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jre8/Dockerfile)
--	[`2.5.7-jdk11`, `2.5-jdk11`, `jdk11`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jdk11/Dockerfile)
--	[`2.5.7-jre11`, `2.5-jre11`, `jre11`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jre11/Dockerfile)
--	[`2.5.7-jdk12`, `2.5-jdk12`, `jdk12`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jdk12/Dockerfile)
--	[`2.5.7-jre12`, `2.5-jre12`, `jre12`](https://github.com/groovy/docker-groovy/blob/bdb06615e9514eab52d003dfb2c8f1a9109ffc16/jre12/Dockerfile)
--	[`3.0.0-beta-1-jdk8`, `3.0-jdk8`, `3.0.0-beta-1-jdk`, `3.0-jdk`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jdk8/Dockerfile)
--	[`3.0.0-beta-1-jre8`, `3.0-jre8`, `3.0.0-beta-1-jre`, `3.0-jre`, `3.0.0-beta-1`, `3.0`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jre8/Dockerfile)
--	[`3.0.0-beta-1-jdk11`, `3.0-jdk11`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jdk11/Dockerfile)
--	[`3.0.0-beta-1-jre11`, `3.0-jre11`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jre11/Dockerfile)
--	[`3.0.0-beta-1-jdk12`, `3.0-jdk12`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jdk12/Dockerfile)
--	[`3.0.0-beta-1-jre12`, `3.0-jre12`](https://github.com/groovy/docker-groovy/blob/445999bb5793fb4f6f3d4af011da9193dbb9fb37/jre12/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `groovy` does not support the currently selected architecture (`arm64v8`).
 
 # Quick reference
 
@@ -70,7 +61,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts arm64v8/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -78,7 +69,7 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes arm64v8/groovy
 ```
 
 # License
