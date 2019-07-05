@@ -16,36 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`indigo-ros-core`, `indigo-ros-core-trusty`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/indigo/ubuntu/trusty/ros-core/Dockerfile)
--	[`indigo-ros-base`, `indigo-ros-base-trusty`, `indigo`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/indigo/ubuntu/trusty/ros-base/Dockerfile)
--	[`indigo-robot`, `indigo-robot-trusty`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/indigo/ubuntu/trusty/robot/Dockerfile)
--	[`indigo-perception`, `indigo-perception-trusty`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/indigo/ubuntu/trusty/perception/Dockerfile)
--	[`kinetic-ros-core`, `kinetic-ros-core-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/kinetic/ubuntu/xenial/ros-core/Dockerfile)
--	[`kinetic-ros-base`, `kinetic-ros-base-xenial`, `kinetic`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/kinetic/ubuntu/xenial/ros-base/Dockerfile)
--	[`kinetic-robot`, `kinetic-robot-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/kinetic/ubuntu/xenial/robot/Dockerfile)
--	[`kinetic-perception`, `kinetic-perception-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/kinetic/ubuntu/xenial/perception/Dockerfile)
--	[`lunar-ros-core`, `lunar-ros-core-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/ubuntu/xenial/ros-core/Dockerfile)
--	[`lunar-ros-base`, `lunar-ros-base-xenial`, `lunar`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/ubuntu/xenial/ros-base/Dockerfile)
--	[`lunar-robot`, `lunar-robot-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/ubuntu/xenial/robot/Dockerfile)
--	[`lunar-perception`, `lunar-perception-xenial`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/ubuntu/xenial/perception/Dockerfile)
--	[`lunar-ros-core-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/debian/stretch/ros-core/Dockerfile)
--	[`lunar-ros-base-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/debian/stretch/ros-base/Dockerfile)
--	[`lunar-robot-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/debian/stretch/robot/Dockerfile)
--	[`lunar-perception-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/lunar/debian/stretch/perception/Dockerfile)
--	[`melodic-ros-core`, `melodic-ros-core-bionic`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/ubuntu/bionic/ros-core/Dockerfile)
--	[`melodic-ros-base`, `melodic-ros-base-bionic`, `melodic`, `latest`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/ubuntu/bionic/ros-base/Dockerfile)
--	[`melodic-robot`, `melodic-robot-bionic`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/ubuntu/bionic/robot/Dockerfile)
--	[`melodic-perception`, `melodic-perception-bionic`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/ubuntu/bionic/perception/Dockerfile)
--	[`melodic-ros-core-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/debian/stretch/ros-core/Dockerfile)
--	[`melodic-ros-base-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/debian/stretch/ros-base/Dockerfile)
--	[`melodic-robot-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/debian/stretch/robot/Dockerfile)
--	[`melodic-perception-stretch`](https://github.com/osrf/docker_images/blob/1a1c56d93f309d10c412c6323db5791fc1b23d1b/ros/melodic/debian/stretch/perception/Dockerfile)
--	[`bouncy-ros-core`, `bouncy-ros-core-bionic`](https://github.com/osrf/docker_images/blob/32244a8fafcf7d3c69c48e3a3aa082e4acc1fbf7/ros/bouncy/ubuntu/bionic/ros-core/Dockerfile)
--	[`bouncy-ros-base`, `bouncy-ros-base-bionic`, `bouncy`](https://github.com/osrf/docker_images/blob/32244a8fafcf7d3c69c48e3a3aa082e4acc1fbf7/ros/bouncy/ubuntu/bionic/ros-base/Dockerfile)
--	[`crystal-ros-core`, `crystal-ros-core-bionic`](https://github.com/osrf/docker_images/blob/32244a8fafcf7d3c69c48e3a3aa082e4acc1fbf7/ros/crystal/ubuntu/bionic/ros-core/Dockerfile)
--	[`crystal-ros-base`, `crystal-ros-base-bionic`, `crystal`](https://github.com/osrf/docker_images/blob/32244a8fafcf7d3c69c48e3a3aa082e4acc1fbf7/ros/crystal/ubuntu/bionic/ros-base/Dockerfile)
--	[`dashing-ros-core`, `dashing-ros-core-bionic`](https://github.com/osrf/docker_images/blob/bf5aa6ca8ca41a096dd20b7b9e4e18594795bd27/ros/dashing/ubuntu/bionic/ros-core/Dockerfile)
--	[`dashing-ros-base`, `dashing-ros-base-bionic`, `dashing`](https://github.com/osrf/docker_images/blob/bf5aa6ca8ca41a096dd20b7b9e4e18594795bd27/ros/dashing/ubuntu/bionic/ros-base/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `ros` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 
@@ -85,7 +58,7 @@ The Robot Operating System (ROS) is a set of software libraries and tools that h
 ## Create a `Dockerfile` in your ROS app project
 
 ```dockerfile
-FROM ros:indigo
+FROM arm32v6/ros:indigo
 # place here your application's setup specifics
 CMD [ "roslaunch", "my-ros-app my-ros-app.launch" ]
 ```
@@ -123,7 +96,7 @@ ROS uses the `~/.ros/` directory for storing logs, and debugging info. If you wi
 For example, if one wishes to use their own `.ros` folder that already resides in their local home directory, with a username of `ubuntu`, we can simple launch the container with an additional volume argument:
 
 ```console
-$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" ros
+$ docker run -v "/home/ubuntu/.ros/:/root/.ros/" arm32v6/ros
 ```
 
 ### Devices
@@ -143,7 +116,7 @@ If we want our all ROS nodes to easily talk to each other, we'll can use a virtu
 > Build a ROS image that includes ROS tutorials using this `Dockerfile:`
 
 ```dockerfile
-FROM ros:indigo-ros-base
+FROM arm32v6/ros:indigo-ros-base
 # install ros tutorials packages
 RUN apt-get update && apt-get install -y \
     ros-indigo-ros-tutorials \
@@ -154,7 +127,7 @@ RUN apt-get update && apt-get install -y \
 > Then to build the image from within the same directory:
 
 ```console
-$ docker build --tag ros:ros-tutorials .
+$ docker build --tag arm32v6/ros:ros-tutorials .
 ```
 
 #### Create network
@@ -173,7 +146,7 @@ $ docker build --tag ros:ros-tutorials .
 $ docker run -it --rm \
     --net foo \
     --name master \
-    ros:ros-tutorials \
+    arm32v6/ros:ros-tutorials \
     roscore
 ```
 
@@ -185,7 +158,7 @@ $ docker run -it --rm \
     --name talker \
     --env ROS_HOSTNAME=talker \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    arm32v6/ros:ros-tutorials \
     rosrun roscpp_tutorials talker
 ```
 
@@ -197,7 +170,7 @@ $ docker run -it --rm \
     --name listener \
     --env ROS_HOSTNAME=listener \
     --env ROS_MASTER_URI=http://master:11311 \
-    ros:ros-tutorials \
+    arm32v6/ros:ros-tutorials \
     rosrun roscpp_tutorials listener
 ```
 

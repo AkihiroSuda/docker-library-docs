@@ -22,7 +22,9 @@ An archive for images of unsupported versions can be found at [`opensuse/archive
 
 # Supported tags and respective `Dockerfile` links
 
-**No supported tags**
+**No supported tags found!**
+
+It is very likely that `opensuse` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 

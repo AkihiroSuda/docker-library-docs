@@ -16,18 +16,14 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.8.0-beta.4`, `3.8-rc`](https://github.com/docker-library/rabbitmq/blob/1ddf81675fc05dcb315283a4cf33b71a1248224c/3.8-rc/ubuntu/Dockerfile)
--	[`3.8.0-beta.4-management`, `3.8-rc-management`](https://github.com/docker-library/rabbitmq/blob/3a5957b93e31661739a9018bc2ae5d20f1bfae59/3.8-rc/ubuntu/management/Dockerfile)
 -	[`3.8.0-beta.4-alpine`, `3.8-rc-alpine`](https://github.com/docker-library/rabbitmq/blob/1ddf81675fc05dcb315283a4cf33b71a1248224c/3.8-rc/alpine/Dockerfile)
 -	[`3.8.0-beta.4-management-alpine`, `3.8-rc-management-alpine`](https://github.com/docker-library/rabbitmq/blob/3a5957b93e31661739a9018bc2ae5d20f1bfae59/3.8-rc/alpine/management/Dockerfile)
--	[`3.7.16-rc.3`, `3.7-rc`](https://github.com/docker-library/rabbitmq/blob/417a82a983d575a4dad9df75aaad3e963c0e9c2f/3.7-rc/ubuntu/Dockerfile)
--	[`3.7.16-rc.3-management`, `3.7-rc-management`](https://github.com/docker-library/rabbitmq/blob/f22c0b266cfeb8cb6d776f9e6a961908c2557ad3/3.7-rc/ubuntu/management/Dockerfile)
 -	[`3.7.16-rc.3-alpine`, `3.7-rc-alpine`](https://github.com/docker-library/rabbitmq/blob/417a82a983d575a4dad9df75aaad3e963c0e9c2f/3.7-rc/alpine/Dockerfile)
 -	[`3.7.16-rc.3-management-alpine`, `3.7-rc-management-alpine`](https://github.com/docker-library/rabbitmq/blob/da06cbdbe9e89305b2650a782af06f96004a894e/3.7-rc/alpine/management/Dockerfile)
--	[`3.7.15`, `3.7`, `3`, `latest`](https://github.com/docker-library/rabbitmq/blob/7fa749a7be00243709c5a8acc2e9c33d9cd82093/3.7/ubuntu/Dockerfile)
--	[`3.7.15-management`, `3.7-management`, `3-management`, `management`](https://github.com/docker-library/rabbitmq/blob/f22c0b266cfeb8cb6d776f9e6a961908c2557ad3/3.7/ubuntu/management/Dockerfile)
 -	[`3.7.15-alpine`, `3.7-alpine`, `3-alpine`, `alpine`](https://github.com/docker-library/rabbitmq/blob/7fa749a7be00243709c5a8acc2e9c33d9cd82093/3.7/alpine/Dockerfile)
 -	[`3.7.15-management-alpine`, `3.7-management-alpine`, `3-management-alpine`, `management-alpine`](https://github.com/docker-library/rabbitmq/blob/4b2b11c59ee65c2a09616b163d4572559a86bb7b/3.7/alpine/management/Dockerfile)
+
+[![arm32v6/rabbitmq build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/rabbitmq.svg?label=arm32v6/rabbitmq%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/rabbitmq/)
 
 # Quick reference
 
@@ -69,7 +65,7 @@ RabbitMQ is open source message broker software (sometimes called message-orient
 One of the important things to note about RabbitMQ is that it stores data based on what it calls the "Node Name", which defaults to the hostname. What this means for usage in Docker is that we should specify `-h`/`--hostname` explicitly for each daemon so that we don't get a random hostname and can keep track of our data:
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3
+$ docker run -d --hostname my-rabbit --name some-rabbit arm32v6/rabbitmq:3
 ```
 
 This will start a RabbitMQ container listening on the default port of 5672. If you give that a minute, then do `docker logs some-rabbit`, you'll see in the output a block similar to:
@@ -107,13 +103,13 @@ See the [RabbitMQ "Clustering Guide"](https://www.rabbitmq.com/clustering.html#e
 For setting a consistent cookie (especially useful for clustering but also for remote/cross-container administration via `rabbitmqctl`), use `RABBITMQ_ERLANG_COOKIE`:
 
 ```console
-$ docker run -d --hostname some-rabbit --name some-rabbit --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' rabbitmq:3
+$ docker run -d --hostname some-rabbit --name some-rabbit --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' arm32v6/rabbitmq:3
 ```
 
 This can then be used from a separate instance to connect:
 
 ```console
-$ docker run -it --rm --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' rabbitmq:3 bash
+$ docker run -it --rm --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' arm32v6/rabbitmq:3 bash
 root@f2a2d3d27c75:/# rabbitmqctl -n rabbit@some-rabbit list_users
 Listing users ...
 guest   [administrator]
@@ -122,7 +118,7 @@ guest   [administrator]
 Alternatively, one can also use `RABBITMQ_NODENAME` to make repeated `rabbitmqctl` invocations simpler:
 
 ```console
-$ docker run -it --rm --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' -e RABBITMQ_NODENAME=rabbit@some-rabbit rabbitmq:3 bash
+$ docker run -it --rm --network some-network -e RABBITMQ_ERLANG_COOKIE='secret cookie here' -e RABBITMQ_NODENAME=rabbit@some-rabbit arm32v6/rabbitmq:3 bash
 root@f2a2d3d27c75:/# rabbitmqctl list_users
 Listing users ...
 guest   [administrator]
@@ -131,7 +127,7 @@ guest   [administrator]
 If you wish to provide the cookie via a file (such as with [Docker Secrets](https://docs.docker.com/engine/swarm/secrets/)), it needs to be mounted at `/var/lib/rabbitmq/.erlang.cookie`:
 
 ```console
-docker service create ... --secret source=my-erlang-cookie,target=/var/lib/rabbitmq/.erlang.cookie ... rabbitmq
+docker service create ... --secret source=my-erlang-cookie,target=/var/lib/rabbitmq/.erlang.cookie ... arm32v6/rabbitmq
 ```
 
 (Note that it will likely also be necessary to specify `uid=XXX,gid=XXX,mode=0600` in order for Erlang in the container to be able to read the cookie file properly. See [Docker's `--secret` documentation for more details](https://docs.docker.com/engine/reference/commandline/service_create/#create-a-service-with-secrets).)
@@ -141,13 +137,13 @@ docker service create ... --secret source=my-erlang-cookie,target=/var/lib/rabbi
 There is a second set of tags provided with the [management plugin](https://www.rabbitmq.com/management.html) installed and enabled by default, which is available on the standard management port of 15672, with the default username and password of `guest` / `guest`:
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
+$ docker run -d --hostname my-rabbit --name some-rabbit arm32v6/rabbitmq:3-management
 ```
 
 You can access it by visiting `http://container-ip:15672` in a browser or, if you need access outside the host, on port 8080:
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 rabbitmq:3-management
+$ docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 arm32v6/rabbitmq:3-management
 ```
 
 You can then go to `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -183,7 +179,7 @@ RABBITMQ_MANAGEMENT_SSL_VERIFY
 If you wish to change the default username and password of `guest` / `guest`, you can do so with the `RABBITMQ_DEFAULT_USER` and `RABBITMQ_DEFAULT_PASS` environmental variables:
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management
+$ docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password arm32v6/rabbitmq:3-management
 ```
 
 You can then go to `http://localhost:8080` or `http://host-ip:8080` in a browser and use `user`/`password` to gain access to the management console
@@ -195,7 +191,7 @@ To source the username and password from files instead of environment variables,
 If you wish to change the default vhost, you can do so with the `RABBITMQ_DEFAULT_VHOST` environmental variables:
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost rabbitmq:3-management
+$ docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost arm32v6/rabbitmq:3-management
 ```
 
 ### Enabling HiPE (deprecated)
@@ -241,13 +237,13 @@ See [the "Official Images" FAQ](https://github.com/docker-library/faq#healthchec
 
 # Image Variants
 
-The `rabbitmq` images come in many flavors, each designed for a specific use case.
+The `arm32v6/rabbitmq` images come in many flavors, each designed for a specific use case.
 
-## `rabbitmq:<version>`
+## `arm32v6/rabbitmq:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `rabbitmq:<version>-alpine`
+## `arm32v6/rabbitmq:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

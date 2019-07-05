@@ -16,27 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`buster`, `buster-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/buster/Dockerfile)
--	[`buster-backports`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/buster/backports/Dockerfile)
--	[`buster-slim`, `buster-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/buster/slim/Dockerfile)
--	[`experimental`, `experimental-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/experimental/Dockerfile)
--	[`jessie`, `jessie-20190610`, `8.11`, `8`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/jessie/Dockerfile)
--	[`jessie-slim`, `jessie-20190610-slim`, `8.11-slim`, `8-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/jessie/slim/Dockerfile)
--	[`oldstable`, `oldstable-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/oldstable/Dockerfile)
--	[`oldstable-slim`, `oldstable-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/oldstable/slim/Dockerfile)
--	[`rc-buggy`, `rc-buggy-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/rc-buggy/Dockerfile)
--	[`sid`, `sid-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/sid/Dockerfile)
--	[`sid-slim`, `sid-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/sid/slim/Dockerfile)
--	[`stable`, `stable-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stable/Dockerfile)
--	[`stable-backports`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stable/backports/Dockerfile)
--	[`stable-slim`, `stable-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stable/slim/Dockerfile)
--	[`stretch`, `stretch-20190610`, `9.9`, `9`, `latest`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stretch/Dockerfile)
--	[`stretch-backports`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stretch/backports/Dockerfile)
--	[`stretch-slim`, `stretch-20190610-slim`, `9.9-slim`, `9-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/stretch/slim/Dockerfile)
--	[`testing`, `testing-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/testing/Dockerfile)
--	[`testing-slim`, `testing-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/testing/slim/Dockerfile)
--	[`unstable`, `unstable-20190610`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/unstable/Dockerfile)
--	[`unstable-slim`, `unstable-20190610-slim`](https://github.com/debuerreotype/docker-debian-artifacts/blob/5cf98e568d562c62b507ba2b3fbfa1971b0c41e2/unstable/slim/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `debian` does not support the currently selected architecture (`arm32v6`).
 
 # Quick reference
 
@@ -73,9 +55,9 @@ Debian is an operating system which is composed primarily of free and open-sourc
 
 # About this image
 
-The `debian:latest` tag will always point the latest stable release (which is, at the time of this writing, `debian:stretch`). Stable releases are also tagged with their version (ie, `debian:8` is an alias for `debian:jessie`, `debian:7` is an alias for `debian:wheezy`, etc).
+The `arm32v6/debian:latest` tag will always point the latest stable release (which is, at the time of this writing, `arm32v6/debian:stretch`). Stable releases are also tagged with their version (ie, `arm32v6/debian:8` is an alias for `arm32v6/debian:jessie`, `arm32v6/debian:7` is an alias for `arm32v6/debian:wheezy`, etc).
 
-The rolling tags (`debian:stable`, `debian:testing`, etc) use the rolling suite names in their `/etc/apt/sources.list` file (ie, `deb http://deb.debian.org/debian testing main`).
+The rolling tags (`arm32v6/debian:stable`, `arm32v6/debian:testing`, etc) use the rolling suite names in their `/etc/apt/sources.list` file (ie, `deb http://deb.debian.org/debian testing main`).
 
 The mirror of choice for these images is [the deb.debian.org CDN pointer/redirector](https://deb.debian.org) so that it's as reliable as possible for the largest subset of users (and is also the default mirror for `debootstrap` as of [2016-10-20](https://anonscm.debian.org/cgit/d-i/debootstrap.git/commit/?id=9e8bc60ad1ccf3a25ce7890526b70059f3e770de)). See the [deb.debian.org homepage](https://deb.debian.org) for more information.
 
@@ -98,14 +80,6 @@ ENV LANG en_US.utf8
 The rootfs tarballs for this image are built using [the reproducible-Debian-rootfs tool, `debuerreotype`](https://github.com/debuerreotype/debuerreotype), with an explicit goal being that they are transparent and reproducible. Using the same toolchain, it should be possible to regenerate (clean-room!) the same tarballs used for building the official Debian images.
 
 Additionally, the scripts in [https://github.com/debuerreotype/docker-debian-artifacts](https://github.com/debuerreotype/docker-debian-artifacts) are used to create each tag's `Dockerfile` and collect architecture-specific tarballs into a single place (for placement into [`dist-ARCH` branches on the same repository](https://github.com/debuerreotype/docker-debian-artifacts/branches), which also contain extra metadata about the artifacts included in each build, such as explicit package versions).
-
-# Image Variants
-
-## `debian:<suite>-slim`
-
-These tags are an experiment in providing a slimmer base (removing some extra files that are normally not necessary within containers, such as man pages and documentation), and are definitely subject to change.
-
-See the `debuerreotype-slimify` script (`debuerreotype` linked above) for more details about what gets removed during the "slimification" process.
 
 # License
 
