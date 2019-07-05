@@ -18,6 +18,8 @@ WARNING:
 
 -	[`1.x`, `1.16.x`, `1.16.6`, `latest`](https://github.com/ExpressGateway/docker-express-gateway/blob/b234fd5473165d79a164b0707827f71be26c8ac5/alpine/Dockerfile)
 
+[![ppc64le/express-gateway build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/express-gateway.svg?label=ppc64le/express-gateway%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/express-gateway/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -89,7 +91,7 @@ $ docker run -d --name express-gateway \
     -v /my/own/datadir:/var/lib/eg \
     -p 8080:8080 \
     -p 9876:9876 \
-    express-gateway
+    ppc64le/express-gateway
 ```
 
 *Note:* You might want to expose other ports to the host in case you're serving your APIs through **HTTPS**.
@@ -100,10 +102,10 @@ You can now read the docs at [express-gateway.io/docs](http://express-gateway.io
 
 ### Install plugin
 
-You can install custom plugins to the current Express Gateway image just creating a new `Dockerfile`, use `express-gateway` as base image and then install the required plugins as global yarn packages
+You can install custom plugins to the current Express Gateway image just creating a new `Dockerfile`, use `ppc64le/express-gateway` as base image and then install the required plugins as global yarn packages
 
 ```dockerfile
-FROM express-gateway
+FROM ppc64le/express-gateway
 RUN yarn global add express-gateway-plugin-name
 ```
 

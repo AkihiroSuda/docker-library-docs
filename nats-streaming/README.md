@@ -18,16 +18,11 @@ WARNING:
 
 ## Simple Tags
 
--	[`0.15.1-linux`, `linux`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/amd64/Dockerfile)
--	[`0.15.1-nanoserver`, `nanoserver`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/windows/nanoserver/Dockerfile)
--	[`0.15.1-nanoserver-1809`, `nanoserver-1809`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/windows/nanoserver2019/Dockerfile)
--	[`0.15.1-windowsservercore`, `windowsservercore`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/windows/windowsservercore/Dockerfile)
+
 
 ## Shared Tags
 
--	`0.15.1`, `latest`:
-	-	[`0.15.1-linux`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/amd64/Dockerfile)
-	-	[`0.15.1-nanoserver`](https://github.com/nats-io/nats-streaming-docker/blob/f786858e5806c3d34532f6cdeab41f9bf26e6e01/windows/nanoserver/Dockerfile)
+[![ppc64le/nats-streaming build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/nats-streaming.svg?label=ppc64le/nats-streaming%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/nats-streaming/)
 
 # Quick reference
 
@@ -69,13 +64,13 @@ Note that the Streaming server itself is backward compatible with previous relea
 Due to restrictions on how the Windows Docker Image is built, running the image without argument will run the NATS Streaming server with memory based store on port 4222 and the monitoring port 8222. If you need to specify any additional argument, or modify these options, you need to specify the executable name as this:
 
 ```bash
-$ docker run -p 4223:4223 -p 8223:8223 nats-streaming nats-streaming-server -p 4223 -m 8223
+$ docker run -p 4223:4223 -p 8223:8223 ppc64le/nats-streaming nats-streaming-server -p 4223 -m 8223
 ```
 
 If you need to specify the entrypoint:
 
 ```bash
-$ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server -p 4222:4222 -p 8222:8222 nats-streaming
+$ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server -p 4222:4222 -p 8222:8222 ppc64le/nats-streaming
 ```
 
 # Non Windows Docker images
@@ -83,13 +78,13 @@ $ docker run --entrypoint c:/nats-streaming-server/nats-streaming-server -p 4222
 If you need to provide arguments to the NATS Streaming server, just pass them to the command line. For instance, to change the listen and monitoring port to 4223 and 8223 respectively:
 
 ```bash
-$ docker run -p 4223:4223 -p 8223:8223 nats-streaming -p 4223 -m 8223
+$ docker run -p 4223:4223 -p 8223:8223 ppc64le/nats-streaming -p 4223 -m 8223
 ```
 
 If you need to specify the entrypoint:
 
 ```bash
-$ docker run --entrypoint /nats-streaming-server -p 4222:4222 -p 8222:8222 nats-streaming
+$ docker run --entrypoint /nats-streaming-server -p 4222:4222 -p 8222:8222 ppc64le/nats-streaming
 ```
 
 # Example usage
@@ -108,15 +103,15 @@ $ docker run --entrypoint /nats-streaming-server -p 4222:4222 -p 8222:8222 nats-
 # For instance, to run the NATS Streaming Server and have it listen on port 4444,
 # you would have to run like this:
 #
-#   docker run -p 4444:4444 nats-streaming -p 4444
+#   docker run -p 4444:4444 ppc64le/nats-streaming -p 4444
 #
 # Or, if you want to publish the port 4444 as a different port, for example 5555:
 #
-#   docker run -p 5555:4444 nats-streaming -p 4444
+#   docker run -p 5555:4444 ppc64le/nats-streaming -p 4444
 #
 # Check "docker run" for more information.
 
-$ docker run -d -p 4222:4222 -p 8222:8222 nats-streaming
+$ docker run -d -p 4222:4222 -p 8222:8222 ppc64le/nats-streaming
 ```
 
 Output that you would get if you had started with `-ti` instead of `d` (for daemon):
@@ -149,7 +144,7 @@ Output that you would get if you had started with `-ti` instead of `d` (for daem
 To use a file based store instead, you would run:
 
 ```bash
-$ docker run -d -p 4222:4222 -p 8222:8222 nats-streaming -store file -dir datastore
+$ docker run -d -p 4222:4222 -p 8222:8222 ppc64le/nats-streaming -store file -dir datastore
 
 [1] 2019/06/05 19:04:03.966479 [INF] STREAM: Starting nats-streaming-server[test-cluster] version 0.15.1
 [1] 2019/06/05 19:04:03.966565 [INF] STREAM: ServerID: Oo9GZy52856Ackk5VBafRe
@@ -184,7 +179,7 @@ $ docker run -d --name=nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
 Now, start the Streaming server and link it to the above docker image:
 
 ```bash
-$ docker run -d --link nats-main nats-streaming -store file -dir datastore -ns nats://nats-main:4222
+$ docker run -d --link nats-main ppc64le/nats-streaming -store file -dir datastore -ns nats://nats-main:4222
 
 [1] 2019/06/05 19:04:20.665663 [INF] STREAM: Starting nats-streaming-server[test-cluster] version 0.15.1
 [1] 2019/06/05 19:04:20.665714 [INF] STREAM: ServerID: gkzkh7CodpgaQpJRaeYZdE
@@ -323,23 +318,6 @@ Common Options:
 # Configuration
 
 Details on how to configure further the NATS Streaming server can be found [here](https://github.com/nats-io/nats-streaming-server#configuring)
-
-# Image Variants
-
-The `nats-streaming` images come in many flavors, each designed for a specific use case.
-
-## `nats-streaming:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `nats-streaming:<version>-windowsservercore`
-
-This image is based on [Windows Server Core (`microsoft/windowsservercore`)](https://hub.docker.com/r/microsoft/windowsservercore/). As such, it only works in places which that image does, such as Windows 10 Professional/Enterprise (Anniversary Edition) or Windows Server 2016.
-
-For information about how to get Docker running on Windows, please see the relevant "Quick Start" guide provided by Microsoft:
-
--	[Windows Server Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server)
--	[Windows 10 Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_10)
 
 # License
 
