@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.9-community`, `latest`, `lts`](https://github.com/SonarSource/docker-sonarqube/blob/7f8fd12c45f4c7801e08d6b938c3869e0ceebd96/7.9-community/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `sonarqube` does not support the currently selected architecture (`i386`).
 
 # Quick reference
 
@@ -58,7 +60,7 @@ This Docker image contains the Community Edition of SonarQube.
 The server is started this way:
 
 ```console
-$ docker run -d --name sonarqube -p 9000:9000 sonarqube
+$ docker run -d --name sonarqube -p 9000:9000 i386/sonarqube
 ```
 
 By default you can login as `admin` with password `admin`, see [authentication documentation](https://docs.sonarqube.org/latest/instance-administration/security/).

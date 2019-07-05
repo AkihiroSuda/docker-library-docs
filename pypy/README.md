@@ -23,6 +23,8 @@ WARNING:
 -	[`3.6-7.1.1`, `3.6-7.1`, `3.6-7`, `3.6`, `3.6-7.1.1-stretch`, `3.6-7.1-stretch`, `3.6-7-stretch`, `3.6-stretch`](https://github.com/docker-library/pypy/blob/669ca6492e33303a5f4770fd2ffa009b8b47ced9/3.6/Dockerfile)
 -	[`3.6-7.1.1-slim`, `3.6-7.1-slim`, `3.6-7-slim`, `3.6-slim`, `3.6-7.1.1-slim-stretch`, `3.6-7.1-slim-stretch`, `3.6-7-slim-stretch`, `3.6-slim-stretch`](https://github.com/docker-library/pypy/blob/669ca6492e33303a5f4770fd2ffa009b8b47ced9/3.6/slim/Dockerfile)
 
+[![i386/pypy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/pypy.svg?label=i386/pypy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/pypy/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -63,7 +65,7 @@ PyPy started out as a Python interpreter written in the Python language itself. 
 ## Create a `Dockerfile` in your Python app project
 
 ```dockerfile
-FROM pypy:3
+FROM i386/pypy:3
 
 WORKDIR /usr/src/app
 
@@ -78,7 +80,7 @@ CMD [ "pypy3", "./your-daemon-or-script.py" ]
 or (if you need to use Python 2):
 
 ```dockerfile
-FROM pypy:2
+FROM i386/pypy:2
 
 WORKDIR /usr/src/app
 
@@ -102,20 +104,20 @@ $ docker run -it --rm --name my-running-app my-python-app
 For many simple, single file projects, you may find it inconvenient to write a complete `Dockerfile`. In such cases, you can run a Python script by using the Python Docker image directly:
 
 ```console
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp pypy:3 pypy3 your-daemon-or-script.py
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp i386/pypy:3 pypy3 your-daemon-or-script.py
 ```
 
 or (again, if you need to use Python 2):
 
 ```console
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp pypy:2 pypy your-daemon-or-script.py
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp i386/pypy:2 pypy your-daemon-or-script.py
 ```
 
 # Image Variants
 
-The `pypy` images come in many flavors, each designed for a specific use case.
+The `i386/pypy` images come in many flavors, each designed for a specific use case.
 
-## `pypy:<version>`
+## `i386/pypy:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
@@ -123,9 +125,9 @@ This tag is based off of [`buildpack-deps`](https://hub.docker.com/_/buildpack-d
 
 Some of these tags may have names like jessie or stretch in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on.
 
-## `pypy:<version>-slim`
+## `i386/pypy:<version>-slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `pypy`. Unless you are working in an environment where *only* the `pypy` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `i386/pypy`. Unless you are working in an environment where *only* the `i386/pypy` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

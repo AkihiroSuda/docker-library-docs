@@ -16,10 +16,11 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.25.4`, `2.25`, `2`, `latest`](https://github.com/docker-library/ghost/blob/6d485f5797c96fae0aef795a38999453d5aa665d/2/debian/Dockerfile)
 -	[`2.25.4-alpine`, `2.25-alpine`, `2-alpine`, `alpine`](https://github.com/docker-library/ghost/blob/1d4d1317bf6276b9b9f950bb0f5354504b2b9977/2/alpine/Dockerfile)
 -	[`1.26.0`, `1.26`, `1`](https://github.com/docker-library/ghost/blob/6d485f5797c96fae0aef795a38999453d5aa665d/1/debian/Dockerfile)
 -	[`1.26.0-alpine`, `1.26-alpine`, `1-alpine`](https://github.com/docker-library/ghost/blob/8eba604d6b6078a318e0a83771ebc8e09f350bf0/1/alpine/Dockerfile)
+
+[![i386/ghost build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/ghost.svg?label=i386/ghost%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/ghost/)
 
 # Quick reference
 
@@ -59,7 +60,7 @@ Ghost is a free and open source blogging platform written in JavaScript and dist
 This will start a Ghost instance listening on the default Ghost port of 2368.
 
 ```console
-$ docker run -d --name some-ghost ghost
+$ docker run -d --name some-ghost i386/ghost
 ```
 
 ## Custom port
@@ -67,7 +68,7 @@ $ docker run -d --name some-ghost ghost
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 ghost
+$ docker run -d --name some-ghost -p 3001:2368 i386/ghost
 ```
 
 Then, access it via `http://localhost:3001` or `http://host-ip:3001` in a browser.
@@ -85,13 +86,13 @@ Mount your existing content. In this example we also use the Alpine base image.
 ### Ghost 1.x.x
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content ghost:1-alpine
+$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content i386/ghost:1-alpine
 ```
 
 ### Ghost 0.11.xx
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost ghost:0.11-alpine
+$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost i386/ghost:0.11-alpine
 ```
 
 ### Docker Volume
@@ -99,7 +100,7 @@ $ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/g
 Alternatively you can use a [data container](http://docs.docker.com/engine/tutorials/dockervolumes/) that has a volume that points to `/var/lib/ghost/content` (or /var/lib/ghost for 0.11.x) and then reference it:
 
 ```console
-$ docker run -d --name some-ghost --volumes-from some-ghost-data ghost
+$ docker run -d --name some-ghost --volumes-from some-ghost-data i386/ghost
 ```
 
 ### SQLite Database
@@ -111,7 +112,7 @@ This Docker image for Ghost uses SQLite. There is nothing special to configure.
 All Ghost configuration parameters (such as `url`) can be specified via environment variables. See [the Ghost documentation](https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables) for details about what configuration is allowed and how to convert a nested configuration key into the appropriate environment variable name:
 
 ```console
-$ docker run -d --name some-ghost -e url=http://some-ghost.example.com ghost
+$ docker run -d --name some-ghost -e url=http://some-ghost.example.com i386/ghost
 ```
 
 (There are further configuration examples in the `stack.yml` listed below.)
@@ -167,13 +168,13 @@ Run `docker stack deploy -c stack.yml ghost` (or `docker-compose -f stack.yml up
 
 # Image Variants
 
-The `ghost` images come in many flavors, each designed for a specific use case.
+The `i386/ghost` images come in many flavors, each designed for a specific use case.
 
-## `ghost:<version>`
+## `i386/ghost:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `ghost:<version>-alpine`
+## `i386/ghost:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

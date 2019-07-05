@@ -25,6 +25,8 @@ WARNING:
 -	[`1.16.0-alpine`, `stable-alpine`, `1.16-alpine`](https://github.com/nginxinc/docker-nginx/blob/9a052e07b2c283df9960375ee40be50c5c462a7e/stable/alpine/Dockerfile)
 -	[`1.16.0-alpine-perl`, `stable-alpine-perl`, `1.16-alpine-perl`](https://github.com/nginxinc/docker-nginx/blob/9a052e07b2c283df9960375ee40be50c5c462a7e/stable/alpine-perl/Dockerfile)
 
+[![i386/nginx build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/nginx.svg?label=i386/nginx%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/nginx/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -63,13 +65,13 @@ Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, H
 ## Hosting some simple static content
 
 ```console
-$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d i386/nginx
 ```
 
 Alternatively, a simple `Dockerfile` can be used to generate a new image that includes the necessary content (which is a much cleaner solution than the bind mount above):
 
 ```dockerfile
-FROM nginx
+FROM i386/nginx
 COPY static-html-directory /usr/share/nginx/html
 ```
 
@@ -90,7 +92,7 @@ Then you can hit `http://localhost:8080` or `http://host-ip:8080` in your browse
 ## Complex configuration
 
 ```console
-$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
+$ docker run --name my-custom-nginx-container -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d i386/nginx
 ```
 
 For information on the syntax of the nginx configuration files, see [the official documentation](http://nginx.org/en/docs/) (specifically the [Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html#conf_structure)).
@@ -98,7 +100,7 @@ For information on the syntax of the nginx configuration files, see [the officia
 If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:
 
 ```console
-$ docker run --name tmp-nginx-container -d nginx
+$ docker run --name tmp-nginx-container -d i386/nginx
 $ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf
 $ docker rm -f tmp-nginx-container
 ```
@@ -106,7 +108,7 @@ $ docker rm -f tmp-nginx-container
 This can also be accomplished more cleanly using a simple `Dockerfile` (in `/host/path/`):
 
 ```dockerfile
-FROM nginx
+FROM i386/nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 
@@ -118,15 +120,15 @@ Then build the image with `docker build -t custom-nginx .` and run it as follows
 $ docker run --name my-custom-nginx-container -d custom-nginx
 ```
 
-### Using environment variables in nginx configuration
+### Using environment variables in i386/nginx configuration
 
-Out-of-the-box, nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your nginx configuration dynamically before nginx starts.
+Out-of-the-box, i386/nginx doesn't support environment variables inside most configuration blocks. But `envsubst` may be used as a workaround if you need to generate your i386/nginx configuration dynamically before i386/nginx starts.
 
 Here is an example using docker-compose.yml:
 
 ```yaml
 web:
-  image: nginx
+  image: i386/nginx
   volumes:
    - ./mysite.template:/etc/nginx/conf.d/mysite.template
   ports:
@@ -142,29 +144,29 @@ The `mysite.template` file may then contain variable references like this:
 `listen       ${NGINX_PORT};
 `
 
-## Running nginx in read-only mode
+## Running i386/nginx in read-only mode
 
-To run nginx in read-only mode, you will need to mount a Docker volume to every location where nginx writes information. The default nginx configuration requires write access to `/var/cache` and `/var/run`. This can be easily accomplished by running nginx as follows:
+To run i386/nginx in read-only mode, you will need to mount a Docker volume to every location where i386/nginx writes information. The default i386/nginx configuration requires write access to `/var/cache` and `/var/run`. This can be easily accomplished by running i386/nginx as follows:
 
 ```console
 $ docker run -d -p 80:80 --read-only -v $(pwd)/nginx-cache:/var/cache/nginx -v $(pwd)/nginx-pid:/var/run nginx
 ```
 
-If you have a more advanced configuration that requires nginx to write to other locations, simply add more volume mounts to those locations.
+If you have a more advanced configuration that requires i386/nginx to write to other locations, simply add more volume mounts to those locations.
 
 ## Running nginx in debug mode
 
 Images since version 1.9.8 come with `nginx-debug` binary that produces verbose output when using higher log levels. It can be used with simple CMD substitution:
 
 ```console
-$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx nginx-debug -g 'daemon off;'
+$ docker run --name my-nginx -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d i386/nginx nginx-debug -g 'daemon off;'
 ```
 
 Similar configuration in docker-compose.yml may look like this:
 
 ```yaml
 web:
-  image: nginx
+  image: i386/nginx
   volumes:
     - ./nginx.conf:/etc/nginx/nginx.conf:ro
   command: [nginx-debug, '-g', 'daemon off;']
@@ -179,12 +181,12 @@ $ id
 uid=101(nginx) gid=101(nginx) groups=101(nginx)
 ```
 
-## Running nginx as a non-root user
+## Running i386/nginx as a non-root user
 
-It is possible to run the image as a less privileged arbitrary UID/GID. This, however, requires modification of nginx configuration to use directories writeable by that specific UID/GID pair:
+It is possible to run the image as a less privileged arbitrary UID/GID. This, however, requires modification of i386/nginx configuration to use directories writeable by that specific UID/GID pair:
 
 ```console
-$ docker run -d -v $PWD/nginx.conf:/etc/nginx/nginx.conf nginx
+$ docker run -d -v $PWD/nginx.conf:/etc/nginx/nginx.conf i386/nginx
 ```
 
 where nginx.conf in the current directory should have the following directives re-defined:
@@ -218,13 +220,13 @@ For more information about Amplify, please check the official documentation [her
 
 # Image Variants
 
-The `nginx` images come in many flavors, each designed for a specific use case.
+The `i386/nginx` images come in many flavors, each designed for a specific use case.
 
-## `nginx:<version>`
+## `i386/nginx:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `nginx:<version>-alpine`
+## `i386/nginx:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
