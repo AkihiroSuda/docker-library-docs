@@ -22,6 +22,8 @@ WARNING:
 -	[`3.8.4`, `3.8`](https://github.com/alpinelinux/docker-alpine/blob/dc10be162e9d2c3f799fde73e25ad30f78ff479b/x86_64/Dockerfile)
 -	[`3.7.3`, `3.7`](https://github.com/alpinelinux/docker-alpine/blob/e5205c8b54dd31cf9f9bb010f56cd5dfca73a711/x86_64/Dockerfile)
 
+[![amd64/alpine build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/alpine.svg?label=amd64/alpine%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/alpine/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -60,7 +62,7 @@ WARNING:
 Use like you would any other base image:
 
 ```dockerfile
-FROM alpine:3.7
+FROM amd64/alpine:3.7
 RUN apk add --no-cache mysql-client
 ENTRYPOINT ["mysql"]
 ```

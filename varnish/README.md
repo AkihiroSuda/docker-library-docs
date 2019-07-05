@@ -19,6 +19,8 @@ WARNING:
 -	[`6.2`, `6.2.0-1`, `6.2.0`, `6`, `latest`, `fresh`](https://github.com/varnish/docker-varnish/blob/82ba69727be4e78de5a3e07a63e8b62d92ab958d/fresh/debian/Dockerfile)
 -	[`6.0`, `6.0.3-1`, `6.0.3`, `stable`](https://github.com/varnish/docker-varnish/blob/82ba69727be4e78de5a3e07a63e8b62d92ab958d/stable/debian/Dockerfile)
 
+[![amd64/varnish build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/varnish.svg?label=amd64/varnish%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/varnish/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -69,13 +71,13 @@ backend default {
 Then run:
 
 ```console
-$ docker run --name my-running-varnish -v /path/to/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /usr/local/var/varnish:exec -d varnish
+$ docker run --name my-running-varnish -v /path/to/default.vcl:/etc/varnish/default.vcl:ro --tmpfs /usr/local/var/varnish:exec -d amd64/varnish
 ```
 
 Alternatively, a simple `Dockerfile` can be used to generate a new image that includes the necessary `default.vcl` (which is a much cleaner solution than the bind mount above):
 
 ```dockerfile
-FROM varnish:6.2
+FROM amd64/varnish:6.2
 
 COPY default.vcl /etc/varnish/
 ```

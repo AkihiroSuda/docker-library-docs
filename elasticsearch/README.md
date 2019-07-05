@@ -19,6 +19,8 @@ WARNING:
 -	[`7.2.0`](https://github.com/docker-library/elasticsearch/blob/0f90651d2bb17829fc69a497888ad7eac89b3edc/7/Dockerfile)
 -	[`6.8.1`](https://github.com/docker-library/elasticsearch/blob/c9aa8eecee3217d3f0497e29c57b8d822a5eea76/6/Dockerfile)
 
+[![amd64/elasticsearch build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/elasticsearch.svg?label=amd64/elasticsearch%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/elasticsearch/)
+
 # Quick reference
 
 -	**Where to get help**:  

@@ -33,6 +33,8 @@ WARNING:
 -	[`sid`, `nd`](https://github.com/neurodebian/dockerfiles/blob/28179a5247bf4681dd56cd11c542f57fafbe0354/dockerfiles/sid/Dockerfile)
 -	[`sid-non-free`, `nd-non-free`](https://github.com/neurodebian/dockerfiles/blob/28179a5247bf4681dd56cd11c542f57fafbe0354/dockerfiles/sid-non-free/Dockerfile)
 
+[![amd64/neurodebian build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/neurodebian.svg?label=amd64/neurodebian%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/neurodebian/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -72,14 +74,14 @@ NeuroDebian images only add NeuroDebian repository and repository's GPG key. No 
 
 `nd` tags are used to reflect suffixes used in versions of packages available from NeuroDebian.
 
-The `neurodebian:latest` tag will always point the Neurodebian-enabled latest stable release of Debian (which is, at the time of this writing, `debian:wheezy`).
+The `amd64/neurodebian:latest` tag will always point the Neurodebian-enabled latest stable release of Debian (which is, at the time of this writing, `debian:wheezy`).
 
 ## sources.list
 
 NeuroDebian APT file is installed under `/etc/apt/sources.list.d/neurodebian.sources.list` and currently enables only `main` (DFSG-compliant) area of the archive:
 
 ```console
-$ docker run neurodebian cat /etc/apt/sources.list.d/neurodebian.sources.list
+$ docker run amd64/neurodebian cat /etc/apt/sources.list.d/neurodebian.sources.list
 deb http://neuro.debian.net/debian wheezy main
 deb http://neuro.debian.net/debian data main
 #deb-src http://neuro.debian.net/debian-devel wheezy main

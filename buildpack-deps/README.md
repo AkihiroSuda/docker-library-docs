@@ -44,6 +44,8 @@ WARNING:
 -	[`xenial-scm`, `16.04-scm`](https://github.com/docker-library/buildpack-deps/blob/2da658b9a1b91fa61d63ffad2ea52685cac6c702/xenial/scm/Dockerfile)
 -	[`xenial`, `16.04`](https://github.com/docker-library/buildpack-deps/blob/ff09b5c5288f4643056bd7938268d749e9f8a2db/xenial/Dockerfile)
 
+[![amd64/buildpack-deps build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/buildpack-deps.svg?label=amd64/buildpack-deps%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/buildpack-deps/)
+
 # Quick reference
 
 -	**Where to get help**:  

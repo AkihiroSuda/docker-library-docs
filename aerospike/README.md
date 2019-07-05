@@ -20,6 +20,8 @@ WARNING:
 -	[`4.5.2.3`](https://github.com/aerospike/aerospike-server.docker/blob/c40b8ae85971f4ebb917c829c9fbe2529e52361d/Dockerfile)
 -	[`4.5.1.8`](https://github.com/aerospike/aerospike-server.docker/blob/02b044d6ab5c2a4fdd6049b7bd1ada5041379451/Dockerfile)
 
+[![amd64/aerospike build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/aerospike.svg?label=amd64/aerospike%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/aerospike/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -58,7 +60,7 @@ Documentation for Aerospike is available at [http://aerospike.com/docs](https://
 The following will run `asd` with all the exposed ports forwarded to the host machine.
 
 ```console
-$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 amd64/aerospike
 ```
 
 **NOTE** Although this is the simplest method to getting Aerospike up and running, but it is not the preferred method. To properly run the container, please specify a **custom configuration** with the **access-address** defined.
@@ -69,7 +71,7 @@ By default, `asd` will use the configuration file at `/etc/aerospike/aerospike.c
 
 	-v <DIRECTORY>:/opt/aerospike/etc
 
-Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `aerospike`:
+Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `amd64/aerospike`:
 
 	--config-file /opt/aerospike/etc/aerospike.conf
 
@@ -78,7 +80,7 @@ This will tell `asd` to use the config file at `/opt/aerospike/etc/aerospike.con
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 amd64/aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
 ```
 
 ### access-address Configuration
@@ -106,7 +108,7 @@ Where `<DIRECTORY>` is the path to a directory containing your data files.
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 amd64/aerospike
 ```
 
 ## Clustering

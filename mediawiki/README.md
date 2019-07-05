@@ -20,6 +20,8 @@ WARNING:
 -	[`1.31.2`, `1.31`, `lts`, `legacy`](https://github.com/wikimedia/mediawiki-docker/blob/b3175c9d4f77220cee1c4ba942f9d2ff2070116e/1.31/Dockerfile)
 -	[`1.27.6`, `1.27`, `legacylts`](https://github.com/wikimedia/mediawiki-docker/blob/b3175c9d4f77220cee1c4ba942f9d2ff2070116e/1.27/Dockerfile)
 
+[![amd64/mediawiki build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mediawiki.svg?label=amd64/mediawiki%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/mediawiki/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -58,13 +60,13 @@ MediaWiki is free and open-source wiki software. Originally developed by Magnus 
 The basic pattern for starting a `mediawiki` instance is:
 
 ```console
-$ docker run --name some-mediawiki -d mediawiki
+$ docker run --name some-mediawiki -d amd64/mediawiki
 ```
 
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-mediawiki -p 8080:80 -d mediawiki
+$ docker run --name some-mediawiki -p 8080:80 -d amd64/mediawiki
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -76,7 +78,7 @@ When first accessing the webserver provided by this image, it will go through a 
 ## MySQL
 
 ```console
-$ docker run --name some-mediawiki --link some-mysql:mysql -d mediawiki
+$ docker run --name some-mediawiki --link some-mysql:mysql -d amd64/mediawiki
 ```
 
 -	Database type: `MySQL, MariaDB, or equivalent`
@@ -90,7 +92,7 @@ By default, this image does not include any volumes.
 The paths `/var/www/html/images` and `/var/www/html/LocalSettings.php` are things that generally ought to be volumes, but do not explicitly have a `VOLUME` declaration in this image because volumes cannot be removed.
 
 ```console
-$ docker run --rm mediawiki tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
+$ docker run --rm amd64/mediawiki tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
 ```
 
 ## ... via [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/) or [`docker-compose`](https://github.com/docker/compose)
