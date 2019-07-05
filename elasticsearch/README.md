@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.2.0`](https://github.com/docker-library/elasticsearch/blob/0f90651d2bb17829fc69a497888ad7eac89b3edc/7/Dockerfile)
--	[`6.8.1`](https://github.com/docker-library/elasticsearch/blob/c9aa8eecee3217d3f0497e29c57b8d822a5eea76/6/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `elasticsearch` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 

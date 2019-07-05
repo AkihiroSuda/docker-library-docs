@@ -16,12 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.0.18`](https://github.com/orientechnologies/orientdb-docker/blob/127587dc5f88c1f1f5f459b186afaa8dda80b7ba/2.0/Dockerfile)
--	[`2.1.25`](https://github.com/orientechnologies/orientdb-docker/blob/127587dc5f88c1f1f5f459b186afaa8dda80b7ba/2.1/Dockerfile)
--	[`2.2.37`](https://github.com/orientechnologies/orientdb-docker/blob/127587dc5f88c1f1f5f459b186afaa8dda80b7ba/2.2/x86_64/openjdk-slim/Dockerfile)
--	[`2.2.37-spatial`](https://github.com/orientechnologies/orientdb-docker/blob/127587dc5f88c1f1f5f459b186afaa8dda80b7ba/2.2-spatial/x86_64/openjdk-slim/Dockerfile)
--	[`3.0.21`, `latest`](https://github.com/orientechnologies/orientdb-docker/blob/0d1076c26f33056fc2bd1f90538b5b6cab7610b7/3.0/x86_64/openjdk-slim/Dockerfile)
--	[`3.0.21-tp3`](https://github.com/orientechnologies/orientdb-docker/blob/0d1076c26f33056fc2bd1f90538b5b6cab7610b7/3.0-tp3/x86_64/openjdk-slim/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `orientdb` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -59,7 +56,7 @@ WARNING:
 When OrientDB starts it asks for the root password. The root user is able to manage the OrientDB server: create new databases, manage users and roles. The root password can be passed to the container using an environment property:
 
 ```console
-$ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 -e ORIENTDB_ROOT_PASSWORD=rootpwd orientdb
+$ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 -e ORIENTDB_ROOT_PASSWORD=rootpwd winamd64/orientdb
 ```
 
 The [Studio](http://orientdb.com/docs/last/Studio-Home-page.html) is accessible to http://<docker-host>:2480 (e.g.: http://localhost:2480)
@@ -76,7 +73,7 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -v <databases_path>:/orientdb/databases \
     -v <backup_path>:/orientdb/backup \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
-    orientdb
+    winamd64/orientdb
 ```
 
 **NOTE**: don't provide an **empty** config folder as volume, because OrientDB will startup with a very minimal configuration.
@@ -86,13 +83,13 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
 The OrientDB image contains a full fledge installation, so it is possible to run the [console](http://orientdb.com/docs/last/Console-Commands.html)
 
 ```console
-$ docker run --rm -it orientdb /orientdb/bin/console.sh
+$ docker run --rm -it winamd64/orientdb /orientdb/bin/console.sh
 ```
 
 or even the etl
 
 ```console
-$ docker run  --rm -it -v <config_path>:/orientdb/config orientdb /orientdb/bin/oetl.sh ../config/oetl-config.json
+$ docker run  --rm -it -v <config_path>:/orientdb/config winamd64/orientdb /orientdb/bin/oetl.sh ../config/oetl-config.json
 ```
 
 ### Override configuration parameters
@@ -106,7 +103,7 @@ $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -v <backup_path>:/orientdb/backup \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
     -e ORIENTDB_NODE_NAME=odb1 \
-    orientdb /orientdb/bin/server.sh  -Ddistributed=true
+    winamd64/orientdb /orientdb/bin/server.sh  -Ddistributed=true
 ```
 
 For further configuration options please refer to the [Configuration](http://orientdb.com/docs/last/Configuration.html) section of the online documentation.
@@ -118,7 +115,7 @@ Environment parameters such as heap size could be passed via command line:
 ```console
 $ docker run -d --name orientdb -p 2424:2424 -p 2480:2480 \
     -e ORIENTDB_ROOT_PASSWORD=rootpwd \
-    orientdb /orientdb/bin/server.sh -Xmx8g
+    winamd64/orientdb /orientdb/bin/server.sh -Xmx8g
 ```
 
 # License

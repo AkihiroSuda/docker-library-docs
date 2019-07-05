@@ -16,15 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`8.7.3-apache`, `8.7-apache`, `8-apache`, `apache`, `8.7.3`, `8.7`, `8`, `latest`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.7/apache/Dockerfile)
--	[`8.7.3-fpm`, `8.7-fpm`, `8-fpm`, `fpm`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.7/fpm/Dockerfile)
--	[`8.7.3-fpm-alpine`, `8.7-fpm-alpine`, `8-fpm-alpine`, `fpm-alpine`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.7/fpm-alpine/Dockerfile)
--	[`8.6.17-apache`, `8.6-apache`, `8.6.17`, `8.6`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.6/apache/Dockerfile)
--	[`8.6.17-fpm`, `8.6-fpm`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.6/fpm/Dockerfile)
--	[`8.6.17-fpm-alpine`, `8.6-fpm-alpine`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/8.6/fpm-alpine/Dockerfile)
--	[`7.67-apache`, `7-apache`, `7.67`, `7`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/7/apache/Dockerfile)
--	[`7.67-fpm`, `7-fpm`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/7/fpm/Dockerfile)
--	[`7.67-fpm-alpine`, `7-fpm-alpine`](https://github.com/docker-library/drupal/blob/f52125f5b83b26f488977abe9cfa8adb68a9f706/7/fpm-alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `drupal` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -64,13 +58,13 @@ Drupal is a free and open-source content-management framework written in PHP and
 The basic pattern for starting a `drupal` instance is:
 
 ```console
-$ docker run --name some-drupal -d drupal
+$ docker run --name some-drupal -d winamd64/drupal
 ```
 
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-drupal -p 8080:80 -d drupal
+$ docker run --name some-drupal -p 8080:80 -d winamd64/drupal
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -82,7 +76,7 @@ When first accessing the webserver provided by this image, it will go through a 
 ## MySQL
 
 ```console
-$ docker run --name some-drupal --network some-network -d drupal
+$ docker run --name some-drupal --network some-network -d winamd64/drupal
 ```
 
 -	Database type: `MySQL, MariaDB, or equivalent`
@@ -92,7 +86,7 @@ $ docker run --name some-drupal --network some-network -d drupal
 ## PostgreSQL
 
 ```console
-$ docker run --name some-drupal --network some-network -d drupal
+$ docker run --name some-drupal --network some-network -d winamd64/drupal
 ```
 
 -	Database type: `PostgreSQL`
@@ -108,7 +102,7 @@ There is consensus that `/var/www/html/modules`, `/var/www/html/profiles`, and `
 If using bind-mounts, one way to accomplish pre-seeding your local `sites` directory would be something like the following:
 
 ```console
-$ docker run --rm drupal tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
+$ docker run --rm winamd64/drupal tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
 ```
 
 This can then be bind-mounted into a new container:
@@ -119,20 +113,20 @@ $ docker run --name some-drupal --network some-network -d \
 	-v /path/on/host/profiles:/var/www/html/profiles \
 	-v /path/on/host/sites:/var/www/html/sites \
 	-v /path/on/host/themes:/var/www/html/themes \
-	drupal
+	winamd64/drupal
 ```
 
 Another solution using Docker Volumes:
 
 ```console
 $ docker volume create drupal-sites
-$ docker run --rm -v drupal-sites:/temporary/sites drupal cp -aRT /var/www/html/sites /temporary/sites
+$ docker run --rm -v drupal-sites:/temporary/sites winamd64/drupal cp -aRT /var/www/html/sites /temporary/sites
 $ docker run --name some-drupal --network some-network -d \
 	-v drupal-modules:/var/www/html/modules \
 	-v drupal-profiles:/var/www/html/profiles \
 	-v drupal-sites:/var/www/html/sites \
 	-v drupal-themes:/var/www/html/themes \
-	drupal
+	winamd64/drupal
 ```
 
 ## ... via [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/) or [`docker-compose`](https://github.com/docker/compose)
@@ -194,22 +188,6 @@ The following Docker Hub features can help with the task of keeping your depende
 ## Running as an arbitrary user
 
 See [the "Running as an arbitrary user" section of the `php` image documentation](https://hub.docker.com/_/php/).
-
-# Image Variants
-
-The `drupal` images come in many flavors, each designed for a specific use case.
-
-## `drupal:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `drupal:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

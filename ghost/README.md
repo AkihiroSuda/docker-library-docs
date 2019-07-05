@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.25.4`, `2.25`, `2`, `latest`](https://github.com/docker-library/ghost/blob/6d485f5797c96fae0aef795a38999453d5aa665d/2/debian/Dockerfile)
--	[`2.25.4-alpine`, `2.25-alpine`, `2-alpine`, `alpine`](https://github.com/docker-library/ghost/blob/1d4d1317bf6276b9b9f950bb0f5354504b2b9977/2/alpine/Dockerfile)
--	[`1.26.0`, `1.26`, `1`](https://github.com/docker-library/ghost/blob/6d485f5797c96fae0aef795a38999453d5aa665d/1/debian/Dockerfile)
--	[`1.26.0-alpine`, `1.26-alpine`, `1-alpine`](https://github.com/docker-library/ghost/blob/8eba604d6b6078a318e0a83771ebc8e09f350bf0/1/alpine/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `ghost` does not support the currently selected architecture (`windows-amd64`).
 
 # Quick reference
 
@@ -59,7 +58,7 @@ Ghost is a free and open source blogging platform written in JavaScript and dist
 This will start a Ghost instance listening on the default Ghost port of 2368.
 
 ```console
-$ docker run -d --name some-ghost ghost
+$ docker run -d --name some-ghost winamd64/ghost
 ```
 
 ## Custom port
@@ -67,7 +66,7 @@ $ docker run -d --name some-ghost ghost
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 ghost
+$ docker run -d --name some-ghost -p 3001:2368 winamd64/ghost
 ```
 
 Then, access it via `http://localhost:3001` or `http://host-ip:3001` in a browser.
@@ -85,13 +84,13 @@ Mount your existing content. In this example we also use the Alpine base image.
 ### Ghost 1.x.x
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content ghost:1-alpine
+$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content winamd64/ghost:1-alpine
 ```
 
 ### Ghost 0.11.xx
 
 ```console
-$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost ghost:0.11-alpine
+$ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost winamd64/ghost:0.11-alpine
 ```
 
 ### Docker Volume
@@ -99,7 +98,7 @@ $ docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/g
 Alternatively you can use a [data container](http://docs.docker.com/engine/tutorials/dockervolumes/) that has a volume that points to `/var/lib/ghost/content` (or /var/lib/ghost for 0.11.x) and then reference it:
 
 ```console
-$ docker run -d --name some-ghost --volumes-from some-ghost-data ghost
+$ docker run -d --name some-ghost --volumes-from some-ghost-data winamd64/ghost
 ```
 
 ### SQLite Database
@@ -111,7 +110,7 @@ This Docker image for Ghost uses SQLite. There is nothing special to configure.
 All Ghost configuration parameters (such as `url`) can be specified via environment variables. See [the Ghost documentation](https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables) for details about what configuration is allowed and how to convert a nested configuration key into the appropriate environment variable name:
 
 ```console
-$ docker run -d --name some-ghost -e url=http://some-ghost.example.com ghost
+$ docker run -d --name some-ghost -e url=http://some-ghost.example.com winamd64/ghost
 ```
 
 (There are further configuration examples in the `stack.yml` listed below.)
@@ -164,22 +163,6 @@ services:
 [![Try in PWD](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/docker-library/docs/e24f39cddf21560cf0a24f149059ff23640b0f16/ghost/stack.yml)
 
 Run `docker stack deploy -c stack.yml ghost` (or `docker-compose -f stack.yml up`), wait for it to initialize completely, and visit `http://swarm-ip:8080`, `http://localhost:8080`, or `http://host-ip:8080` (as appropriate).
-
-# Image Variants
-
-The `ghost` images come in many flavors, each designed for a specific use case.
-
-## `ghost:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `ghost:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
