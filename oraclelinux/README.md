@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.6`, `7`, `latest`](https://github.com/oracle/container-images/blob/5f779fc53c7d42f7870a42c9cc188514bb081fc7/7.6/Dockerfile)
--	[`7-slim`](https://github.com/oracle/container-images/blob/5f779fc53c7d42f7870a42c9cc188514bb081fc7/7-slim/Dockerfile)
--	[`6.10`, `6`](https://github.com/oracle/container-images/blob/5f779fc53c7d42f7870a42c9cc188514bb081fc7/6.10/Dockerfile)
--	[`6-slim`](https://github.com/oracle/container-images/blob/5f779fc53c7d42f7870a42c9cc188514bb081fc7/6-slim/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `oraclelinux` does not support the currently selected architecture (`arm32v7`).
 
 # Quick reference
 
@@ -54,7 +53,7 @@ Oracle Linux is an open-source operating system available under the GNU General 
 
 ## How to use these images
 
-The Oracle Linux images are intended for use in the **FROM** field of a downstream `Dockerfile`. For example, to use the latest optimized Oracle Linux 7 image, specify `FROM oraclelinux:7-slim`.
+The Oracle Linux images are intended for use in the **FROM** field of a downstream `Dockerfile`. For example, to use the latest optimized Oracle Linux 7 image, specify `FROM arm32v7/oraclelinux:7-slim`.
 
 ## Official Resources
 
