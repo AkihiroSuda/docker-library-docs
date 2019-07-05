@@ -17,11 +17,11 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`5.0.5`, `5.0`, `5`, `latest`, `5.0.5-stretch`, `5.0-stretch`, `5-stretch`, `stretch`](https://github.com/docker-library/redis/blob/916d3d22527edd7461738396431fb237d39d0b3a/5.0/Dockerfile)
--	[`5.0.5-32bit`, `5.0-32bit`, `5-32bit`, `32bit`, `5.0.5-32bit-stretch`, `5.0-32bit-stretch`, `5-32bit-stretch`, `32bit-stretch`](https://github.com/docker-library/redis/blob/916d3d22527edd7461738396431fb237d39d0b3a/5.0/32bit/Dockerfile)
 -	[`5.0.5-alpine`, `5.0-alpine`, `5-alpine`, `alpine`, `5.0.5-alpine3.10`, `5.0-alpine3.10`, `5-alpine3.10`, `alpine3.10`](https://github.com/docker-library/redis/blob/a767b4701be8de74f252e204e3eadb39c8e38583/5.0/alpine/Dockerfile)
 -	[`4.0.14`, `4.0`, `4`, `4.0.14-stretch`, `4.0-stretch`, `4-stretch`](https://github.com/docker-library/redis/blob/916d3d22527edd7461738396431fb237d39d0b3a/4.0/Dockerfile)
--	[`4.0.14-32bit`, `4.0-32bit`, `4-32bit`, `4.0.14-32bit-stretch`, `4.0-32bit-stretch`, `4-32bit-stretch`](https://github.com/docker-library/redis/blob/916d3d22527edd7461738396431fb237d39d0b3a/4.0/32bit/Dockerfile)
 -	[`4.0.14-alpine`, `4.0-alpine`, `4-alpine`, `4.0.14-alpine3.10`, `4.0-alpine3.10`, `4-alpine3.10`](https://github.com/docker-library/redis/blob/a767b4701be8de74f252e204e3eadb39c8e38583/4.0/alpine/Dockerfile)
+
+[![s390x/redis build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/redis.svg?label=s390x/redis%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/redis/)
 
 # Quick reference
 
@@ -61,13 +61,13 @@ Redis is an open-source, networked, in-memory, key-value data store with optiona
 ## start a redis instance
 
 ```console
-$ docker run --name some-redis -d redis
+$ docker run --name some-redis -d s390x/redis
 ```
 
 ## start with persistent storage
 
 ```console
-$ docker run --name some-redis -d redis redis-server --appendonly yes
+$ docker run --name some-redis -d s390x/redis redis-server --appendonly yes
 ```
 
 If persistence is enabled, data is stored in the `VOLUME /data`, which can be used with `--volumes-from some-volume-container` or `-v /docker/host/dir:/data` (see [docs.docker volumes](https://docs.docker.com/engine/tutorials/dockervolumes/)).
@@ -77,7 +77,7 @@ For more about Redis Persistence, see [http://redis.io/topics/persistence](http:
 ## connecting via `redis-cli`
 
 ```console
-$ docker run -it --network some-network --rm redis redis-cli -h some-redis
+$ docker run -it --network some-network --rm s390x/redis redis-cli -h some-redis
 ```
 
 ## Additionally, If you want to use your own redis.conf ...
@@ -85,7 +85,7 @@ $ docker run -it --network some-network --rm redis redis-cli -h some-redis
 You can create your own Dockerfile that adds a redis.conf from the context into /data/, like so.
 
 ```dockerfile
-FROM redis
+FROM s390x/redis
 COPY redis.conf /usr/local/etc/redis/redis.conf
 CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 ```
@@ -93,7 +93,7 @@ CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 Alternatively, you can specify something along the same lines with `docker run` options.
 
 ```console
-$ docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis redis redis-server /usr/local/etc/redis/redis.conf
+$ docker run -v /myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf --name myredis s390x/redis redis-server /usr/local/etc/redis/redis.conf
 ```
 
 Where `/myredis/conf/` is a local directory containing your `redis.conf` file. Using this method means that there is no need for you to have a Dockerfile for your redis container.
@@ -112,15 +112,15 @@ You can find the list of modules for Redis on [redis.io](https://redis.io/module
 
 # Image Variants
 
-The `redis` images come in many flavors, each designed for a specific use case.
+The `s390x/redis` images come in many flavors, each designed for a specific use case.
 
-## `redis:<version>`
+## `s390x/redis:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
 Some of these tags may have names like stretch in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on.
 
-## `redis:<version>-alpine`
+## `s390x/redis:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

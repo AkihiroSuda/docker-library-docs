@@ -16,12 +16,11 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`27`](https://github.com/fedora-cloud/docker-brew-fedora/blob/e1796b2753d5a5731de5915661e4639c4342b950/x86_64/Dockerfile)
--	[`26`](https://github.com/fedora-cloud/docker-brew-fedora/blob/035aa2a3970e4e10a9a6ae0b79322b882bfe50d3/x86_64/Dockerfile)
--	[`latest`, `30`](https://github.com/fedora-cloud/docker-brew-fedora/blob/5aaf94f96a9716336f7823c2fd3b2608273d277a/x86_64/Dockerfile)
--	[`28`](https://github.com/fedora-cloud/docker-brew-fedora/blob/aa106da2be30656a7ccb32b96f6788031ce8656f/x86_64/Dockerfile)
--	[`29`](https://github.com/fedora-cloud/docker-brew-fedora/blob/4dbc2ccd3b4d52258981eaf12043025054d53023/x86_64/Dockerfile)
--	[`rawhide`, `31`](https://github.com/fedora-cloud/docker-brew-fedora/blob/cb2251e0c66c300a0d7b696bb42f86f4e7181898/x86_64/Dockerfile)
+-	[`latest`, `30`](https://github.com/fedora-cloud/docker-brew-fedora/blob/5aaf94f96a9716336f7823c2fd3b2608273d277a/s390x/Dockerfile)
+-	[`28`](https://github.com/fedora-cloud/docker-brew-fedora/blob/aa106da2be30656a7ccb32b96f6788031ce8656f/s390x/Dockerfile)
+-	[`29`](https://github.com/fedora-cloud/docker-brew-fedora/blob/4dbc2ccd3b4d52258981eaf12043025054d53023/s390x/Dockerfile)
+
+[![s390x/fedora build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/fedora.svg?label=s390x/fedora%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/fedora/)
 
 # Quick reference
 
@@ -54,11 +53,11 @@ This image serves as the `official Fedora image` for the [Fedora Distribution](h
 
 ![logo](https://raw.githubusercontent.com/docker-library/docs/b449be7df57e9ed9086bb5821bfb5d6cdc5d67a4/fedora/logo.png)
 
-The `fedora:latest` tag will always point to the latest stable release.
+The `s390x/fedora:latest` tag will always point to the latest stable release.
 
 This image is a relatively small footprint in comparison to a standard Fedora installation. This image is generated in the [Fedora Build System](http://koji.fedoraproject.org/koji/) and is built from [this kickstart file](https://pagure.io/fedora-kickstarts/blob/master/f/fedora-container-base.ks).
 
-[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `fedora:rawhide` and any specific version of Fedora as `fedora:$version` (example: `fedora:23`).
+[Fedora Rawhide](https://fedoraproject.org/wiki/Releases/Rawhide) is available via `s390x/fedora:rawhide` and any specific version of Fedora as `s390x/fedora:$version` (example: `s390x/fedora:23`).
 
 # License
 

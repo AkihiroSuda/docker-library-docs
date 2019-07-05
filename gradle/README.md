@@ -23,6 +23,8 @@ WARNING:
 -	[`5.5.0-jdk12`, `5.5-jdk12`, `jdk12`](https://github.com/keeganwitt/docker-gradle/blob/ee03f213eb762ea24077e6b7aaaa290026062f3c/jdk12/Dockerfile)
 -	[`5.5.0-jre12`, `5.5-jre12`, `jre12`](https://github.com/keeganwitt/docker-gradle/blob/ee03f213eb762ea24077e6b7aaaa290026062f3c/jre12/Dockerfile)
 
+[![s390x/gradle build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/gradle.svg?label=s390x/gradle%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/gradle/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -60,7 +62,7 @@ WARNING:
 
 Run this from the directory of the Gradle project you want to build.
 
-`docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle <gradle-task>`
+`docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project s390x/gradle gradle <gradle-task>`
 
 Note the above command runs using uid/gid 1000 (user *gradle*) to avoid running as root.
 
