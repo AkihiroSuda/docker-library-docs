@@ -16,10 +16,11 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.31.0-uclibc`, `1.31-uclibc`, `1-uclibc`, `uclibc`](https://github.com/docker-library/busybox/blob/c8aad80db26b6c232eab37255c84918fa018172a/uclibc/Dockerfile)
--	[`1.31.0-glibc`, `1.31-glibc`, `1-glibc`, `glibc`](https://github.com/docker-library/busybox/blob/c8aad80db26b6c232eab37255c84918fa018172a/glibc/Dockerfile)
--	[`1.31.0-musl`, `1.31-musl`, `1-musl`, `musl`](https://github.com/docker-library/busybox/blob/c8aad80db26b6c232eab37255c84918fa018172a/musl/Dockerfile)
--	[`1.31.0`, `1.31`, `1`, `latest`](https://github.com/docker-library/busybox/blob/c8aad80db26b6c232eab37255c84918fa018172a/uclibc/Dockerfile)
+-	[`1.31.0-uclibc`, `1.31-uclibc`, `1-uclibc`, `uclibc`](https://github.com/docker-library/busybox/blob/0606818f7a63e2f2909381fe4f25806e7363003e/uclibc/Dockerfile)
+-	[`1.31.0-glibc`, `1.31-glibc`, `1-glibc`, `glibc`](https://github.com/docker-library/busybox/blob/0606818f7a63e2f2909381fe4f25806e7363003e/glibc/Dockerfile)
+-	[`1.31.0`, `1.31`, `1`, `latest`](https://github.com/docker-library/busybox/blob/0606818f7a63e2f2909381fe4f25806e7363003e/uclibc/Dockerfile)
+
+[![arm32v5/busybox build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/busybox.svg?label=arm32v5/busybox%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/busybox/)
 
 # Quick reference
 
@@ -61,7 +62,7 @@ BusyBox combines tiny versions of many common UNIX utilities into a single small
 ## Run BusyBox shell
 
 ```console
-$ docker run -it --rm busybox
+$ docker run -it --rm arm32v5/busybox
 ```
 
 This will drop you into an `sh` shell to allow you to do what you want inside a BusyBox system.
@@ -69,7 +70,7 @@ This will drop you into an `sh` shell to allow you to do what you want inside a 
 ## Create a `Dockerfile` for a binary
 
 ```dockerfile
-FROM busybox
+FROM arm32v5/busybox
 COPY ./my-static-binary /my-static-binary
 CMD ["/my-static-binary"]
 ```
@@ -78,21 +79,17 @@ This `Dockerfile` will allow you to create a minimal image for your statically c
 
 # Image Variants
 
-The `busybox` images contain BusyBox built against various "libc" variants (for a comparison of "libc" variants, [Eta Labs has a very nice chart](http://www.etalabs.net/compare_libcs.html) which lists many similarities and differences).
+The `arm32v5/busybox` images contain BusyBox built against various "libc" variants (for a comparison of "libc" variants, [Eta Labs has a very nice chart](http://www.etalabs.net/compare_libcs.html) which lists many similarities and differences).
 
 For more information about the specific particulars of the build process for each variant, see `Dockerfile.builder` in the same directory as each variant's `Dockerfile` (see links above).
 
-## `busybox:uclibc`
+## `arm32v5/busybox:uclibc`
 
 -	[uClibc](https://uclibc.org) via [Buildroot](https://buildroot.org) (statically compiled)
 
-## `busybox:glibc`
+## `arm32v5/busybox:glibc`
 
 -	[glibc from Debian](https://packages.debian.org/search?searchon=names&exact=1&suite=all&section=all&keywords=libc6) (which is then included in the image)
-
-## `busybox:musl`
-
--	[musl from Alpine](https://pkgs.alpinelinux.org/packages?name=musl) (statically compiled)
 
 # License
 

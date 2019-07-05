@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`v1.4.2-2.0`, `v1.4-2`, `latest`](https://github.com/fluent/fluentd-docker-image/blob/dabca3c327d08be6d43a8919316a57ca2228e603/v1.4/alpine/Dockerfile)
 -	[`v1.4.2-debian-2.0`, `v1.4-debian-2`](https://github.com/fluent/fluentd-docker-image/blob/dabca3c327d08be6d43a8919316a57ca2228e603/v1.4/debian/Dockerfile)
+
+[![arm32v5/fluentd build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/fluentd.svg?label=arm32v5/fluentd%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/fluentd/)
 
 # Quick reference
 
@@ -55,7 +56,7 @@ For more information, check [official site](https://www.fluentd.org/) and [docum
 # How to run images
 
 ```bash
-$ docker run -p 24224:24224 -p 24224:24224/udp -u fluent -v /path/to/dir:/fluentd/log fluentd
+$ docker run -p 24224:24224 -p 24224:24224/udp -u fluent -v /path/to/dir:/fluentd/log arm32v5/fluentd
 2019-01-16 11:49:55 +0000 [info]: parsing config file is succeeded path="/fluentd/etc/fluent.conf"
 ...
 2019-01-16 11:58:27 +0000 [info]: #0 [input1] listening port port=24224 bind="0.0.0.0"
